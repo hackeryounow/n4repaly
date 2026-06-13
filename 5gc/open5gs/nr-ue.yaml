@@ -1,0 +1,29 @@
+version: '3'
+services:
+  nr_ue:
+    image: swr.cn-north-4.myhuaweicloud.com/cn_5gc/docker_ueransim:v3.2.8
+    container_name: nr_ue
+    command: ["/mnt/ueransim/ueransim_image_init.sh"]
+    stdin_open: true
+    tty: true
+    
+    volumes:
+      - ./config/ueransim:/mnt/ueransim
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - .env
+    environment:
+      - COMPONENT_NAME=ueransim-ue
+    expose:
+      - "4997/udp"
+    cap_add:
+      - NET_ADMIN
+    privileged: true
+    networks:
+      default:
+        ipv4_address: ${NR_UE_IP}
+networks:
+  default:
+    external:
+      name: docker_open5gs_default

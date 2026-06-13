@@ -1,0 +1,33 @@
+# N4Relay Configuration
+# PFCP Relay with Web Interface for 5G Core Network
+
+relay:
+  # UDP listen address/port for receiving PFCP messages
+  listen_addr: "0.0.0.0"
+  listen_port: 8805
+  # Target UPF address/port to forward PFCP messages to
+  target_addr: "upf"
+  target_port: 8805
+
+web:
+  # HTTP server for Web UI and REST API
+  host: "0.0.0.0"
+  port: 8080
+
+intercept:
+  # Whether to enable packet interception by default
+  enabled: false
+  # Maximum number of packets that can be held simultaneously
+  max_held: 100
+
+buffer:
+  # Maximum number of packets to store in history
+  max_packets: 5000
+
+queue:
+  # Maximum number of packets in the processing queue.
+  # If the queue is full, incoming packets are dropped.
+  max_size: 10000
+  # Number of async worker tasks that process packets from the queue.
+  # Increase for higher throughput under burst traffic.
+  workers: 4

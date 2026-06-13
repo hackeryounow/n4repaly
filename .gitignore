@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+
+# Build output
+dist/
+
+# Logs
+*.log
+config/log/
+
+# Environment files (may contain secrets)
+.env
+.env.*
+!.env.example
+!5gc/*/.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker volumes
+docker-compose.override.yml
+
+# Python
+*.egg-info/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# Misc
+*.bak
+*.tmp

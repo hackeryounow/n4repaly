@@ -1,0 +1,30 @@
+# N4Relay Configuration
+# Deployed between SMF and UPF in free5gc environment
+
+relay:
+  # Listen for PFCP traffic from SMF
+  listen_addr: "0.0.0.0"
+  listen_port: 8805
+  # Forward PFCP traffic to the real UPF
+  target_addr: "upf.free5gc.org"
+  target_port: 8805
+  # Rewrite NodeID in UPF responses to match what SMF expects.
+  # Must match the nodeID in SMF's userplaneInformation.upNodes.UPF.nodeID
+  smf_upf_node_id: "n4relay.free5gc.org"
+
+web:
+  # Web UI and REST API
+  host: "0.0.0.0"
+  port: 8080
+
+intercept:
+  # Start with interception disabled (toggle from Web UI)
+  enabled: false
+  max_held: 100
+
+buffer:
+  max_packets: 5000
+
+queue:
+  max_size: 10000
+  workers: 4
